@@ -5,7 +5,7 @@ require 'fastlane_core/configuration/configuration'
 module Fastlane
   module Helper
     class Slack
-      def self.slack(message: "", certificate: nil, params: {})
+      def self.slack(message: "APNS Push Cert Alert", certificate: nil, params: {})
         fields = [
           {
             title: "App Identifier",
