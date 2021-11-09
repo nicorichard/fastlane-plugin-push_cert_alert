@@ -16,9 +16,9 @@ Generate alerts for when a push certificate will expire soon, or has expired alr
 
 ## Usage
 
-If you already use get_push_certificate (pem) and slack actions somewhere in your lanes then you are already configured.
+> If you already use get_push_certificate (pem) and slack actions somewhere in your lanes then you are already configured. Run `bundle exec fastlane action push_cert_alert` for more information.
 
-Just run `push_cert_alert` from some lane:
+Simply add `push_cert_alert` to some lane:
 
 ```ruby
 lane :test do
@@ -54,7 +54,26 @@ push_cert_alert(
 )
 ```
 
-Run `bundle exec fastlane action push_cert_alert` for more information.
+## Integration
+
+Integrate this lane with your other lanes and/or CI to be made aware early of any upcoming push certificate expiration.
+
+### Circle CI
+
+Example Circle CI job which could be run with your daily builds
+
+```yaml
+
+jobs:
+  push_cert_alert:
+    executor: my_executor
+    steps:
+      - checkout
+      - restore_cache
+      - install_bundles
+      - run: bundle exec fastlane push_cert_alert
+
+```
 
 ## Example
 
