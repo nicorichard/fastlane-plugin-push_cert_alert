@@ -16,7 +16,28 @@ Generate alerts for when a push certificate will expire soon, or has expired alr
 
 ## Usage
 
-If you already use pem/get_push_certificate, and slack actions somewhere in your lanes then most things will already be configured. Just run `push_cert_alert` from a lane to receive Slack notifications when approaching your APNS profile's expiration date.
+If you already use get_push_certificate (pem) and slack actions somewhere in your lanes then you are already configured.
+
+Just run `push_cert_alert` from some lane:
+
+```ruby
+lane :test do
+    push_cert_alert
+end
+```
+
+And you will receive a Slack alert when your cert has expired (or expires soon):
+
+> An APNS push certificate expires in 30 days
+>
+> **Lane**$~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$**Result**\
+> test    $~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~$ Error
+>
+> **App Identifier**$~~~~~~~~~~~~~~~~~~~~$**Type**\
+> com.company.name  $~~~~~~~~~~$ production
+>
+> **Expires at**$~~~~~~~~~~~~~~~~~~~~~~~~~~$**Name**\
+> 1955-11-05 11:11:11 UTC $~~~~$ Apple Push Services
 
 You can also add custom callbacks for the events if desired:
 
@@ -32,6 +53,8 @@ push_cert_alert(
     end
 )
 ```
+
+Run `bundle exec fastlane action push_cert_alert` for more information.
 
 ## Example
 
