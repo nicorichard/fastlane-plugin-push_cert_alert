@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.author        = 'Nico Richard'
   spec.email         = 'nicorichard@gmail.com'
 
-  spec.summary       = 'Generate alerts when a push certificate will expire soon'
+  spec.summary       = 'Generate alerts for when your APNS push certificate expires or will expire soon'
   spec.homepage      = "https://github.com/CityTransit/fastlane-plugin-push_cert_alert"
   spec.license       = "MIT"
 
