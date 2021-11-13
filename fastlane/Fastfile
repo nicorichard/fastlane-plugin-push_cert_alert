@@ -1,3 +1,3 @@
 lane :test do
-  push_cert_alert
+  check_push_certificate
 end

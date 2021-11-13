@@ -5,7 +5,7 @@ require_relative '../helper/slack_helper'
 
 module Fastlane
   module Actions
-    class PushCertAlertAction < Action
+    class CheckPushCertificateAction < Action
       def self.run(params)
         Helper::Login.login(params)
 
@@ -45,16 +45,11 @@ module Fastlane
       end
 
       def self.description
-        "Create alerts for APNS push certificates expiration"
+        "Easily create alerts for your APNS push certificate expiration"
       end
 
       def self.authors
         ["Nico Richard"]
-      end
-
-      def self.details
-        # Optional:
-        "Create alerts for when APNS push certificates have expired, or will expire soon"
       end
 
       def self.available_options
@@ -147,7 +142,7 @@ module Fastlane
       def self.example_code
         [
           <<-CODE
-            push_cert_alert(
+            check_push_certificate(
               active_days_limit: 60,
               expires_soon: proc do |cert, days|
                 puts "#{days} days to live!"

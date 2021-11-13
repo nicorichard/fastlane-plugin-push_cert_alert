@@ -1,6 +1,10 @@
-# push_cert_alert plugin
+# Push Cert Alert - Fastlane Plugin
 
 [![fastlane Plugin Badge](https://rawcdn.githack.com/fastlane/fastlane/master/fastlane/assets/plugin-badge.svg)](https://rubygems.org/gems/fastlane-plugin-push_cert_alert)
+
+Fastlane's [PEM](https://docs.fastlane.tools/actions/pem/) tool provides amazing capabilities for generating new push certificates when the old one will expire.
+
+But what if you just want to just check the expiration date without making modifications? Or alert your team on Slack when the date is approaching?
 
 ## Getting Started
 
@@ -19,11 +23,11 @@ Generate alerts for when a push certificate will expire soon, or has expired alr
 > If you already use get_push_certificate (pem) and slack actions somewhere in your lanes then you are already configured.\
 > Run `bundle exec fastlane action push_cert_alert` for more information.
 
-Simply add `push_cert_alert` to some lane:
+Simply add `check_push_certificate` to some lane:
 
 ```ruby
 lane :test do
-    push_cert_alert
+    check_push_certificate
 end
 ```
 
@@ -41,7 +45,7 @@ And you will receive a Slack alert when your cert has expired (or expires soon):
 You can also add custom callbacks for the events if desired:
 
 ```ruby
-push_cert_alert(
+check_push_certificate(
     active_days_limit: 60, # Default is 30
     skip_slack: true, # Defaults to true
     expires_soon: proc do |cert, days|
@@ -70,7 +74,7 @@ jobs:
       - checkout
       - restore_cache
       - install_bundles
-      - run: bundle exec fastlane push_cert_alert
+      - run: bundle exec fastlane YOUR LANE
 
 ```
 
